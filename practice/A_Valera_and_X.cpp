@@ -3,39 +3,40 @@
 using namespace std;
 
 int main()
-{
+{   
     int n;
-    char d, c;
-    cin >> n;
+    cin  >> n;
     char arr[n][n];
-    for(int i = 0; i < n; i++)
-    for(int j = 0; j< n; j++)
-      {
+    for(int i = 0; i< n ; i++)
+    for(int j = 0; j < n; j++)
         cin >> arr[i][j];
-        if(i == 0 and j == 0) d = arr[i][j];
-        else c = arr[i][j];
-      }  
 
-    int counter = 0;
+    char x = arr[n/2][n/2];
+    char y = arr[0][1];
+    int flag =0;
     for(int i = 0; i< n; i++)
-    for(int j = 0; j< n; j++)
     {
-        // if(j+counter || j == n-1 - counter)
-        if(arr[i][j+counter] != d and arr[i][n-1-counter] != d) //this means another char is at dia
+        //conditions where the matrix is not x
+        if(arr[i][i] != x || arr[i][n - (i + 1)] != x || arr[i][i] == y || arr[i][n - (i +1 )] == y)
         {
-            cout << "no"<< endl;
-            return 0;
+            flag =1 ;
+            break;
         }
-        else if(j != j+counter and j!= n- 1 - counter)
+        for(int j = 0; j< n ; j++)
         {
-            if(arr[i][j] != c) {
-                cout << "no"<< endl;
-                return 0;
+            //check where characters other than diagnols are not y
+            if(j != i && j != (n - (i + 1)))
+            {
+                if(arr[i][j] != y) {
+                    flag = 1;
+                    break;
+                }
             }
         }
-        ++counter;
     }
-cout << "yes";
+
+    if(flag) cout << "NO";
+    else cout << "YES";
 
 
     return 0;
