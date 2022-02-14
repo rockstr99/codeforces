@@ -4,11 +4,22 @@ using namespace std;
 
 int main()
 {
-    int arr[4];
-    for(int i = 0;i< 4; i++) cin >> arr[i];
-    int n;
-    cin >> n;
-    for(int i = )
+    int a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    int co = e;
+    if(a == 1 || b == 1 || c == 1 || d ==1 ) {
+        cout << co<< endl;
+        }
+    else 
+    {
+        for(int i = 1; i<= e; ++i)
+        {
+            //check the condition where dragon was not killed
+            if((i % a != 0) && (i %b != 0 )&& (i %c != 0 )&& (i %d != 0 )) --co;
+        }
+        cout << co<< endl;
+    }
+    
 
     return 0;
 }
